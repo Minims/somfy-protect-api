@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
     name="somfy-protect-api",
     packages=["somfy_protect_api"],
-    version="0.1.0c",
+    version="0.1.1",
     description="Python3 API Client for Somfy Protect (Home Alarm)",
     author="Minims",
     author_email="github@minims.fr",
