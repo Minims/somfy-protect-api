@@ -1,0 +1,4 @@
+include README.md LICENSE
+graft somfy_protect_api
+global-include *.py
+
