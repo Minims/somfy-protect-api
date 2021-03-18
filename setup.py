@@ -1,15 +1,31 @@
-from distutils.core import setup
+# -*- coding: utf-8 -*-
+from setuptools import setup
 
-setup(
-    name="somfy-protect-api",
-    packages=["somfy_protect_api"],
-    version="0.1.1",
-    description="Python3 API Client for Somfy Protect (Home Alarm)",
-    author="Minims",
-    author_email="github@minims.fr",
-    url="https://github.com/Minims/somfy-protect-api",
-    keywords=["somfy", "protect", "home_alarm"],
-    install_requires=["requests"],
-    license="GNU General Public License v3.0",
-    classifiers=["Programming Language :: Python :: 3.7",],
-)
+packages = [
+    "somfy_protect_api",
+    "somfy_protect_api.api",
+    "somfy_protect_api.api.devices",
+]
+
+package_data = {"": ["*"]}
+
+install_requires = ["requests-oauthlib>=1.3.0,<2.0.0"]
+
+setup_kwargs = {
+    "name": "somfy_protect_api",
+    "version": "0.1.2",
+    "description": "Python3 API Client for Somfy Protect (Home Alarm)",
+    "author": "Minims",
+    "author_email": "github@minims.fr",
+    "maintainer": None,
+    "maintainer_email": None,
+    "license": "GNU General Public License v3.0",
+    "url": "https://github.com/Minims/somfy-protect-api",
+    "packages": packages,
+    "package_data": package_data,
+    "install_requires": install_requires,
+    "python_requires": ">=3.6.1,<4.0",
+}
+
+
+setup(**setup_kwargs)

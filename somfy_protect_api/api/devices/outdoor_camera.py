@@ -15,7 +15,6 @@ class OutDoorCamera(SomfyProtectDevice):
         """
         return cast(float, self.get_status("wifi_level_percent"))
 
-
     def get_power_state(self) -> int:
         """Power State
 

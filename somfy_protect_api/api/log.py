@@ -17,7 +17,5 @@ def setup_logger(debug: bool = False) -> None:
     else:
         log_level = logging.INFO
 
-    logging.basicConfig(
-        level=log_level, format="%(asctime)s [%(levelname)s] %(message)s"
-    )
+    logging.basicConfig(level=log_level, format="%(asctime)s [%(levelname)s] %(message)s")
     LOGGER.addHandler(logging.StreamHandler())

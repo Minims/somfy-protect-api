@@ -1,3 +1,6 @@
+### 0.1.2
+* Fix Pypi package
+
 ### 0.1.1
 * Rework API like https://github.com/tetienne/somfy-open-api
 

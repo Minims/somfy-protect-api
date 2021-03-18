@@ -106,9 +106,7 @@ class SomfyProtectApi:
         response.raise_for_status()
         return response.json()
 
-    def get_devices(
-        self, site_id: str, category: Optional[Category] = None
-    ) -> List[Device]:
+    def get_devices(self, site_id: str, category: Optional[Category] = None) -> List[Device]:
         """List Devices from a Site ID
 
         Args:
@@ -128,8 +126,7 @@ class SomfyProtectApi:
         devices += [
             Device(**d)
             for d in content.get("items")
-            if category is None
-            or category.value in Device(**d).device_definition.get("label")
+            if category is None or category.value in Device(**d).device_definition.get("label")
         ]
 
         return devices
