@@ -49,7 +49,7 @@ from somfy_protect_api.api.somfy_protect_api import SomfyProtectApi
 
 USERNAME = "email@address.com"
 PASSWORD = "********"
-CACHE_PATH = "/my/path/to/file"
+CACHE_PATH = "token.json"
 
 
 def get_token():
@@ -87,7 +87,7 @@ if __name__ == "__main__":
 
     # Set Alarm Status
     disarmed = api.update_site(site_id=sites[0].id, security_level="disarmed")
-    print(f"Task: {disarmed})
+    print(f"Task: {disarmed}")
 
     # Get Data from a Device.
     devices = api.get_devices(site_id=sites[0].id, category=Category.OUTDOOR_SIREN)

@@ -90,19 +90,29 @@ class SomfyProtectApi:
         response.raise_for_status()
         return response.json()
 
-    def update_device(self, site_id: str, device_id: str, status: Dict) -> Dict:
+    def update_device(self, site_id: str, device_id: str, device_label: str, settings: Dict,) -> Dict:
         """Update Device Settings
 
         Args:
             site_id (str): Site ID
             device_id (str): Device ID
+            device_label (str): Device Label
             settings (Dict): Settings (as return by get_device)
 
         Returns:
             str: Task ID
         """
-        status = {"status": status}
-        response = self.put(f"/site/{site_id}/device/{device_id}", json=status)
+        if settings is None or device_label is None:
+            raise ValueError(f"Missing settings and/or device_label")
+
+        # Clean Settings Dict
+        settings.pop("object")
+        # settings.pop('disarmed')
+        # settings.pop('partial')
+        # settings.pop('armed')
+
+        payload = {"settings": settings, "label": device_label}
+        response = self.put(f"/site/{site_id}/device/{device_id}", json=payload)
         response.raise_for_status()
         return response.json()
 
