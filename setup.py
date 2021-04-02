@@ -13,7 +13,7 @@ install_requires = ["requests-oauthlib>=1.3.0,<2.0.0"]
 
 setup_kwargs = {
     "name": "somfy_protect_api",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "description": "Python3 API Client for Somfy Protect (Home Alarm)",
     "author": "Minims",
     "author_email": "github@minims.fr",
