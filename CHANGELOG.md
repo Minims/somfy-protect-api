@@ -1,3 +1,6 @@
+### 0.1.3
+* Fix Get/Put Device
+
 ### 0.1.2
 * Fix Pypi package
 
