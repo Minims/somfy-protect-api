@@ -141,7 +141,7 @@ class SomfyProtectApi:
 
         return devices
 
-    def get_device(self, device_id: str) -> Device:
+    def get_device(self, site_id: str, device_id: str) -> Device:
         """Get Device details
 
         Args:
@@ -151,7 +151,7 @@ class SomfyProtectApi:
         Returns:
             Device: Device object
         """
-        response = self.get(f"/device/{device_id}")
+        response = self.get(f"/site/{site_id}/device/{device_id}")
         response.raise_for_status()
         return Device(**response.json())
 
