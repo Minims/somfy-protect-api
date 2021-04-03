@@ -14,7 +14,7 @@ from somfy_protect_api.api.model import (
     Site,
 )
 
-BASE_URL = "https://api.myfox.io/v3"
+BASE_URL = "https://api.myfox.io"
 
 SOMFY_PROTECT_TOKEN = "https://sso.myfox.io/oauth/oauth/v2/token"
 
@@ -27,6 +27,7 @@ ACTION_LIST = [
     "reboot",
     "halt",
     "sound_test",
+    "measure_ambiant_light",
 ]
 
 
@@ -69,7 +70,7 @@ class SomfyProtectApi:
         Returns:
             List[Site]: List of Site object
         """
-        response = self.get("/site")
+        response = self.get("/v3/site")
         response.raise_for_status()
         return [Site(**s) for s in response.json().get("items")]
 
@@ -83,7 +84,7 @@ class SomfyProtectApi:
         Returns:
             Site: Site object
         """
-        response = self.get(f"/site/{site_id}")
+        response = self.get(f"/v3/site/{site_id}")
         response.raise_for_status()
         return Site(**response.json())
 
@@ -97,7 +98,7 @@ class SomfyProtectApi:
             Dict: requests Response object
         """
         security_level = {"status": security_level.lower()}
-        response = self.put(f"/site/{site_id}/security", json=security_level)
+        response = self.put(f"/v3/site/{site_id}/security", json=security_level)
         response.raise_for_status()
         return response.json()
 
@@ -109,7 +110,7 @@ class SomfyProtectApi:
         Returns:
             Dict: requests Response object
         """
-        response = self.put(f"/site/{site_id}/alarm/stop", json="")
+        response = self.put(f"/v3/site/{site_id}/alarm/stop", json="")
         response.raise_for_status()
         return response.json()
 
@@ -125,7 +126,7 @@ class SomfyProtectApi:
         if mode not in ["silent", "alarm"]:
             raise ValueError("Mode must be 'silent' or 'alarm'")
         paylaod = {"type": mode}
-        response = self.put(f"/site/{site_id}/panic", json=mode)
+        response = self.put(f"/v3/site/{site_id}/panic", json=mode)
         response.raise_for_status()
         return response.json()
 
@@ -143,7 +144,7 @@ class SomfyProtectApi:
         if action not in ACTION_LIST:
             raise ValueError(f"Unknown action {action}")
 
-        response = self.post(f"/site/{site_id}/device/{device_id}/action", json={"action": action})
+        response = self.post(f"/v3/site/{site_id}/device/{device_id}/action", json={"action": action})
         response.raise_for_status()
         return response.json()
 
@@ -169,7 +170,40 @@ class SomfyProtectApi:
         # settings.pop('armed')
 
         payload = {"settings": settings, "label": device_label}
-        response = self.put(f"/site/{site_id}/device/{device_id}", json=payload)
+        response = self.put(f"/v3/site/{site_id}/device/{device_id}", json=payload)
+        response.raise_for_status()
+        return response.json()
+
+    def camera_snapshot(self, site_id: str, device_id: str) -> Device:
+        """Get Camera Snapshot
+
+        Args:
+            site_id (str): Site ID
+            device_id (str): Site ID
+
+        Returns:
+            Response: Response Image
+        """
+        response = self.post(f"/video/site/{site_id}/device/{device_id}/snapshot", json={"refresh": 10})
+        response.raise_for_status()
+        # path = "file.jpeg"
+        if response.status_code == 200:
+            # with open(path, "wb") as f:
+            #    for chunk in response:
+            #        f.write(chunk)
+            return response
+
+    def camera_refresh_snapshot(self, site_id: str, device_id: str) -> Device:
+        """Get Camera Snapshot
+
+        Args:
+            site_id (str): Site ID
+            device_id (str): Site ID
+
+        Returns:
+            Task: Somfy Task
+        """
+        response = self.post(f"/video/site/{site_id}/device/{device_id}/refresh-snapshot", json={})
         response.raise_for_status()
         return response.json()
 
@@ -184,7 +218,7 @@ class SomfyProtectApi:
             List[Device]: List of Device object
         """
         devices = []  # type: List[Device]
-        response = self.get(f"/site/{site_id}/device")
+        response = self.get(f"/v3/site/{site_id}/device")
         try:
             content = response.json()
         except JSONDecodeError:
@@ -208,7 +242,7 @@ class SomfyProtectApi:
         Returns:
             Device: Device object
         """
-        response = self.get(f"/site/{site_id}/device/{device_id}")
+        response = self.get(f"/v3/site/{site_id}/device/{device_id}")
         response.raise_for_status()
         return Device(**response.json())
 
