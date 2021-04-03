@@ -28,6 +28,8 @@ Currently you can:
  - Trigger the Alarm
  - Open/Close the Indoor Camera Shutter
  - Get Latest Snapshot of the Camera
+ - Update Device Settings
+ - Send Device actions
 
 
 ## TODO
