@@ -30,3 +30,13 @@ class IndoorCamera(SomfyProtectDevice):
             float: Power State (0 and 1)
         """
         return cast(int, self.get_status("power_state"))
+
+    def close_shutter(self) -> None:
+        """Close Shutter
+        """
+        self.api.action_device(site_id=self.site_id, device_id=self.device_id, action="shutter_close")
+
+    def open_shutter(self) -> None:
+        """Open Shutter
+        """
+        self.api.action_device(site_id=self.site_id, device_id=self.device_id, action="shutter_open")
