@@ -24,11 +24,13 @@ This Somfy Protect currently exposes the following type of devices:
 Currently you can:
  - Get the state of a device like battery sate, link state, température, ...
  - Set the alarm security level (disarmed, armed, partial).
+ - Stop the Alarm
+ - Trigger the Alarm
+ - Open/Close the Indoor Camera Shutter
+ - Get Latest Snapshot of the Camera
 
 
 ## TODO
- - Manage Roller Shuter on Indoor  [DONE]
- - Update a Device. [DONE]
  - Streaming Video (If Possible) [TODO]
  - TBD..
 
