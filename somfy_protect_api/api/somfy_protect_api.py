@@ -76,7 +76,7 @@ class SomfyProtectApi:
         response.raise_for_status()
         return Site(**response.json())
 
-    def update_site(self, site_id: str, security_level: AvailableStatus) -> Dict:
+    def update_security_level(self, site_id: str, security_level: AvailableStatus) -> Dict:
         """Set Alarm Security Level
 
         Args:
@@ -87,6 +87,34 @@ class SomfyProtectApi:
         """
         security_level = {"status": security_level.lower()}
         response = self.put(f"/site/{site_id}/security", json=security_level)
+        response.raise_for_status()
+        return response.json()
+
+    def stop_alarm(self, site_id: str) -> Dict:
+        """Stop Current Alarm
+
+        Args:
+            site_id (str): Site ID
+        Returns:
+            Dict: requests Response object
+        """
+        response = self.put(f"/site/{site_id}/alarm/stop", json="")
+        response.raise_for_status()
+        return response.json()
+
+    def trigger_alarm(self, site_id: str, mode: str) -> Dict:
+        """Trigger Alarm
+
+        Args:
+            site_id (str): Site ID
+            mode (str): Mode (silent, alarm)
+        Returns:
+            Dict: requests Response object
+        """
+        if mode not in ["silent", "alarm"]:
+            raise ValueError("Mode must be 'silent' or 'alarm'")
+        paylaod = {"type": mode}
+        response = self.put(f"/site/{site_id}/panic", json=mode)
         response.raise_for_status()
         return response.json()
 
