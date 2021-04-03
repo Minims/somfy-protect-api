@@ -18,6 +18,17 @@ BASE_URL = "https://api.myfox.io/v3"
 
 SOMFY_PROTECT_TOKEN = "https://sso.myfox.io/oauth/oauth/v2/token"
 
+ACTION_LIST = [
+    "shutter_open",
+    "shutter_close",
+    "autoprotection_pause",
+    "light_on",
+    "light_off",
+    "reboot",
+    "halt",
+    "sound_test",
+]
+
 
 class SomfyProtectApi:
     """Somfy Protect Api Class
@@ -115,6 +126,24 @@ class SomfyProtectApi:
             raise ValueError("Mode must be 'silent' or 'alarm'")
         paylaod = {"type": mode}
         response = self.put(f"/site/{site_id}/panic", json=mode)
+        response.raise_for_status()
+        return response.json()
+
+    def action_device(self, site_id: str, device_id: str, action: str,) -> Dict:
+        """Make an action on a Device
+
+        Args:
+            site_id (str): Site ID
+            device_id (str): Device ID
+            action (str): Action
+
+        Returns:
+            str: Task ID
+        """
+        if action not in ACTION_LIST:
+            raise ValueError(f"Unknown action {action}")
+
+        response = self.post(f"/site/{site_id}/device/{device_id}/action", json={"action": action})
         response.raise_for_status()
         return response.json()
 
