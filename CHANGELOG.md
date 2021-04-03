@@ -1,4 +1,8 @@
 ### 0.1.3
+* Add Device Action
+* Add Camera Snapshot
+
+### 0.1.3
 * Fix Get/Put Device
 
 ### 0.1.2

@@ -27,8 +27,9 @@ Currently you can:
 
 
 ## TODO
- - Manage Roller Shuter on Indoor Camera
- - Update a Device.
+ - Manage Roller Shuter on Indoor  [DONE]
+ - Update a Device. [DONE]
+ - Streaming Video (If Possible) [TODO]
  - TBD..
 
 ## Installation
