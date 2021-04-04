@@ -91,7 +91,7 @@ if __name__ == "__main__":
     print(f"Alarm Status for {sites[0].label} is {sites[0].security_level}")
 
     # Set Alarm Status
-    disarmed = api.update_site(site_id=sites[0].id, security_level="disarmed")
+    disarmed = api.update_security_level(site_id=sites[0].id, security_level="disarmed")
     print(f"Task: {disarmed}")
 
     # Get Data from a Device.
