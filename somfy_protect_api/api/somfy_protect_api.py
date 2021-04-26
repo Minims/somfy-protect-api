@@ -110,7 +110,7 @@ class SomfyProtectApi:
         Returns:
             Dict: requests Response object
         """
-        response = self.put(f"/v3/site/{site_id}/alarm/stop", json="")
+        response = self.put(f"/v3/site/{site_id}/alarm/stop", json={})
         response.raise_for_status()
         return response.json()
 

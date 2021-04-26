@@ -1,4 +1,7 @@
-### 0.1.3
+### 0.1.5
+* Fix Alarm trigger
+
+### 0.1.4
 * Add Device Action
 * Add Camera Snapshot
 
