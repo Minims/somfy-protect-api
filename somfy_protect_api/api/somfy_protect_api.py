@@ -125,8 +125,8 @@ class SomfyProtectApi:
         """
         if mode not in ["silent", "alarm"]:
             raise ValueError("Mode must be 'silent' or 'alarm'")
-        paylaod = {"type": mode}
-        response = self.put(f"/v3/site/{site_id}/panic", json=mode)
+        payload = {"type": mode}
+        response = self.post(f"/v3/site/{site_id}/panic", json=payload)
         response.raise_for_status()
         return response.json()
 
