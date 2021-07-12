@@ -14,3 +14,4 @@ class Category(Enum):
     INTELLITAG = "IntelliTag"
     KEY_FOB = "Key Fob"
     MOTION = "Myfox Security Infrared Sensor"
+    SMOKE_DETECTOR = "Somfy Smoke Detector"
