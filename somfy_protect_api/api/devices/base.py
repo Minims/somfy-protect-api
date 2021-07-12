@@ -6,8 +6,7 @@ from somfy_protect_api.api.somfy_protect_api import SomfyProtectApi
 
 
 class SomfyProtectDevice:
-    """Somfy Protect Device
-    """
+    """Somfy Protect Device"""
 
     __slots__ = "site", "device", "api"
 
@@ -17,8 +16,7 @@ class SomfyProtectDevice:
         self.api = api
 
     def refresh_state(self) -> None:
-        """Refresh State
-        """
+        """Refresh State"""
         self.device = self.api.get_device(site_id=self.site.id, device_id=self.device.id)
 
     def get_version(self) -> float:

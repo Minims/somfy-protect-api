@@ -32,8 +32,7 @@ ACTION_LIST = [
 
 
 class SomfyProtectApi:
-    """Somfy Protect Api Class
-    """
+    """Somfy Protect Api Class"""
 
     def __init__(
         self,
@@ -130,7 +129,12 @@ class SomfyProtectApi:
         response.raise_for_status()
         return response.json()
 
-    def action_device(self, site_id: str, device_id: str, action: str,) -> Dict:
+    def action_device(
+        self,
+        site_id: str,
+        device_id: str,
+        action: str,
+    ) -> Dict:
         """Make an action on a Device
 
         Args:
@@ -148,7 +152,13 @@ class SomfyProtectApi:
         response.raise_for_status()
         return response.json()
 
-    def update_device(self, site_id: str, device_id: str, device_label: str, settings: Dict,) -> Dict:
+    def update_device(
+        self,
+        site_id: str,
+        device_id: str,
+        device_label: str,
+        settings: Dict,
+    ) -> Dict:
         """Update Device Settings
 
         Args:
@@ -282,7 +292,9 @@ class SomfyProtectApi:
         print(json)
         return self._request("put", path, json=json)
 
-    def request_token(self,) -> Dict[str, str]:
+    def request_token(
+        self,
+    ) -> Dict[str, str]:
         """Generic method for fetching a Somfy Protect access token.
 
         Returns:

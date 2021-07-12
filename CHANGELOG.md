@@ -1,7 +1,12 @@
+### 0.1.6
+* Add Smoke Detector
+
 ### 0.1.5.1
 * Fix Alarm trigger
+
 ### 0.1.5
 * Fix Alarm trigger
+
 
 ### 0.1.4
 * Add Device Action

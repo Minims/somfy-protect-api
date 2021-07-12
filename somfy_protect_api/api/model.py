@@ -5,8 +5,7 @@ from typing import Any, Dict, List
 
 
 class Site:
-    """Site Object
-    """
+    """Site Object"""
 
     __slots__ = (
         "id",
@@ -36,8 +35,7 @@ class Site:
 
 
 class Device:
-    """Device Object
-    """
+    """Device Object"""
 
     __slots__ = (
         "id",
@@ -87,8 +85,7 @@ class AvailableStatus(Enum):
 
 
 class Status:
-    """Alarm Status
-    """
+    """Alarm Status"""
 
     def __init__(self, security_level: AvailableStatus):
         self.security_level = security_level

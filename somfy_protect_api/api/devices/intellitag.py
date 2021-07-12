@@ -40,7 +40,7 @@ class IntelliTag(SomfyProtectDevice):
         return cast(bool, self.get_status("recalibration_required"))
 
     def is_recalibrateable(self) -> bool:
-        """ Is Recalibrateable
+        """Is Recalibrateable
 
         Returns:
             bool: Recalibrateable
