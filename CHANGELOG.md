@@ -1,4 +1,7 @@
 ### 0.1.6
+* Add Extender
+* Add MyFox Camera
+### 0.1.6
 * Add Smoke Detector
 
 ### 0.1.5.1

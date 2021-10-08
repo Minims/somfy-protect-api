@@ -16,9 +16,12 @@ This Somfy Protect currently exposes the following type of devices:
   - Link
   - Motion Sensors
   - InDoor Camera
-  - OutDoor Camera (Not Tested)
+  - MyFox Camera
+  - OutDoor Camera
   - InDoor Siren
   - OutDoor Siren
+  - Smoke Detector
+  - Extender
 
 ## Supported Action
 Currently you can:
@@ -30,6 +33,7 @@ Currently you can:
  - Get Latest Snapshot of the Camera
  - Update Device Settings
  - Send Device actions
+ - etc...
 
 
 ## TODO

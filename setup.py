@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import aenum
 from setuptools import setup
 
 packages = [
@@ -9,7 +10,7 @@ packages = [
 
 package_data = {"": ["*"]}
 
-install_requires = ["requests-oauthlib>=1.3.0,<2.0.0"]
+install_requires = ["requests-oauthlib>=1.3.0,<2.0.0", "aenum"]
 
 setup_kwargs = {
     "name": "somfy_protect_api",

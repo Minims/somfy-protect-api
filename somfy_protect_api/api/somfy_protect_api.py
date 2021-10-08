@@ -237,7 +237,7 @@ class SomfyProtectApi:
         devices += [
             Device(**d)
             for d in content.get("items")
-            if category is None or category.value in Device(**d).device_definition.get("label")
+            if category is None or category.value.lower() in Device(**d).device_definition.get("label").lower()
         ]
 
         return devices
