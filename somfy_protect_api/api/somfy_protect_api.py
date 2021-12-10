@@ -307,6 +307,7 @@ class SomfyProtectApi:
             password=self.password,
             client_id=self.client_id,
             client_secret=self.client_secret,
+            include_client_id=True,
         )
 
     def refresh_tokens(self) -> Dict[str, Union[str, int]]:
