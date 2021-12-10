@@ -1,6 +1,10 @@
+### 0.1.8
+* Fox OAuth
+
 ### 0.1.7
 * Add Extender
 * Add MyFox Camera
+
 ### 0.1.6
 * Add Smoke Detector
 
